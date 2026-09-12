@@ -353,7 +353,61 @@ let currentQuestionIndex = 0;
 let score = 0;
         }
 
-    </script>
+    </script>function showQuestion() {
+
+    const question =
+        quizQuestions[currentQuestionIndex];
+
+
+    document.getElementById("quizInfo")
+        .textContent =
+        playerName +
+        " • " +
+        selectedCategory +
+        " • " +
+        selectedDifficulty;
+
+
+    document.getElementById("questionNumber")
+        .textContent =
+        "Kérdés " +
+        (currentQuestionIndex + 1) +
+        " / " +
+        quizQuestions.length;
+
+
+    document.getElementById("questionText")
+        .textContent =
+        question.question;
+
+
+    document.getElementById("answer0")
+        .textContent =
+        question.answers[0];
+
+
+    document.getElementById("answer1")
+        .textContent =
+        question.answers[1];
+
+
+    document.getElementById("answer2")
+        .textContent =
+        question.answers[2];
+
+
+    document.getElementById("answer3")
+        .textContent =
+        question.answers[3];
+
+
+    document.getElementById("feedback")
+        .textContent = "";
+
+
+    document.getElementById("nextButton")
+        .style.display = "none";
+}
 
 </body>
 
