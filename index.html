@@ -297,16 +297,56 @@
             selectedCategory = category;
 
 
-            alert(
-                "Játékos: " +
-                playerName +
-                "\nNehézség: " +
-                selectedDifficulty +
-                "\nKérdések: " +
-                selectedQuestionCount +
-                "\nKategória: " +
-                selectedCategory
-            );let quizQuestions = [];
+            function chooseCategory(category) {
+
+    selectedCategory = category;
+
+    quizQuestions = questions.filter(function(question) {
+
+        return (
+            question.category === selectedCategory &&
+            question.difficulty === selectedDifficulty
+        );
+
+    });
+
+
+    if (quizQuestions.length === 0) {
+
+        alert(
+            "Ehhez a kategóriához és nehézséghez még nincs elég kérdés."
+        );
+
+        return;
+    }
+
+
+    quizQuestions = quizQuestions.sort(function() {
+
+        return Math.random() - 0.5;
+
+    });
+
+
+    quizQuestions =
+        quizQuestions.slice(0, selectedQuestionCount);
+
+
+    currentQuestionIndex = 0;
+
+    score = 0;
+
+
+    document.getElementById("categoryScreen")
+        .style.display = "none";
+
+
+    document.getElementById("quizScreen")
+        .style.display = "block";
+
+
+    showQuestion();
+}
 
 let currentQuestionIndex = 0;
 
