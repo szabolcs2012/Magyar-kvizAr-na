@@ -14,7 +14,46 @@
 
     <p>Üdvözöllek a KvízArénában!</p>
 
-    <h2>Hamarosan indul a játék!</h2>
+    <h2>Írd be a neved a játék kezdéséhez!</h2>
+
+    <input
+        type="text"
+        id="playerName"
+        placeholder="Neved..."
+        maxlength="30"
+    >
+
+    <button onclick="startGame()">Tovább</button>
+
+    <p id="errorMessage"></p>
+
+
+    <script>
+
+        function startGame() {
+
+            const name = document
+                .getElementById("playerName")
+                .value
+                .trim();
+
+            const errorMessage =
+                document.getElementById("errorMessage");
+
+
+            if (name === "") {
+
+                errorMessage.textContent =
+                    "❌ A név megadása kötelező!";
+
+                return;
+            }
+
+
+            alert("Szia, " + name + "!");
+        }
+
+    </script>
 
 </body>
 
