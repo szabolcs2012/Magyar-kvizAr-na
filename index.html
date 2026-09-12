@@ -203,7 +203,48 @@
     <!-- JAVASCRIPT                -->
     <!-- ========================= -->
 
-    <script>
+    <script>function answerQuestion(answerIndex) {
+
+    const question =
+        quizQuestions[currentQuestionIndex];
+
+
+    const buttons = [
+        document.getElementById("answer0"),
+        document.getElementById("answer1"),
+        document.getElementById("answer2"),
+        document.getElementById("answer3")
+    ];
+
+
+    if (answerIndex === question.correctAnswer) {
+
+        score++;
+
+        document.getElementById("feedback")
+            .textContent =
+            "✅ Helyes válasz!";
+
+    } else {
+
+        document.getElementById("feedback")
+            .textContent =
+            "❌ Helytelen válasz! " +
+            "A helyes válasz: " +
+            question.answers[question.correctAnswer];
+    }
+
+
+    buttons.forEach(function(button) {
+
+        button.disabled = true;
+
+    });
+
+
+    document.getElementById("nextButton")
+        .style.display = "inline-block";
+}
 
         let playerName = "";
 
