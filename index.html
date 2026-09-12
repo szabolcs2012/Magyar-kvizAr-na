@@ -10,32 +10,86 @@
 
 <body>
 
-    <h1>🧠 KvízAréna</h1>
+    <!-- NÉV MEGADÁSA -->
 
-    <p>Üdvözöllek a KvízArénában!</p>
+    <div id="nameScreen">
 
-    <h2>Írd be a neved a játék kezdéséhez!</h2>
+        <h1>🧠 KvízAréna</h1>
 
-    <input
-        type="text"
-        id="playerName"
-        placeholder="Neved..."
-        maxlength="30"
-    >
+        <p>Üdvözöllek a KvízArénában!</p>
 
-    <button onclick="startGame()">Tovább</button>
+        <h2>Írd be a neved a játék kezdéséhez!</h2>
 
-    <p id="errorMessage"></p>
+        <input
+            type="text"
+            id="playerName"
+            placeholder="Neved..."
+            maxlength="30"
+        >
+
+        <button onclick="startGame()">Tovább</button>
+
+        <p id="errorMessage"></p>
+
+    </div>
+
+
+    <!-- NEHÉZSÉG KIVÁLASZTÁSA -->
+
+    <div id="difficultyScreen" style="display: none;">
+
+        <h1>🎮 Válassz nehézséget!</h1>
+
+        <p id="welcomeMessage"></p>
+
+        <button onclick="chooseDifficulty('Könnyű', 30)">
+            🟢 Könnyű
+            <br>
+            30 kérdés
+        </button>
+
+        <br><br>
+
+        <button onclick="chooseDifficulty('Nehéz', 60)">
+            🟡 Nehéz
+            <br>
+            60 kérdés
+        </button>
+
+        <br><br>
+
+        <button onclick="chooseDifficulty('Nagyon nehéz', 90)">
+            🔴 Nagyon nehéz
+            <br>
+            90 kérdés
+        </button>
+
+        <br><br>
+
+        <button onclick="chooseDifficulty('Lehetetlen', 120)">
+            ☠️ Lehetetlen
+            <br>
+            120 kérdés
+        </button>
+
+    </div>
 
 
     <script>
 
+        let playerName = "";
+
+        let selectedDifficulty = "";
+
+        let selectedQuestionCount = "";
+
+
+        // NÉV ELMENTÉSE
+
         function startGame() {
 
-            const name = document
-                .getElementById("playerName")
-                .value
-                .trim();
+            const name =
+                document.getElementById("playerName").value.trim();
 
             const errorMessage =
                 document.getElementById("errorMessage");
@@ -50,7 +104,43 @@
             }
 
 
-            alert("Szia, " + name + "!");
+            playerName = name;
+
+
+            // Név képernyő elrejtése
+
+            document.getElementById("nameScreen").style.display =
+                "none";
+
+
+            // Nehézség képernyő megjelenítése
+
+            document.getElementById("difficultyScreen").style.display =
+                "block";
+
+
+            // Üdvözlő szöveg
+
+            document.getElementById("welcomeMessage").textContent =
+                "Szia, " + playerName + "! Válaszd ki a nehézséget.";
+        }
+
+
+        // NEHÉZSÉG KIVÁLASZTÁSA
+
+        function chooseDifficulty(difficulty, questionCount) {
+
+            selectedDifficulty = difficulty;
+
+            selectedQuestionCount = questionCount;
+
+
+            alert(
+                "Nehézség: " +
+                selectedDifficulty +
+                "\nKérdések száma: " +
+                selectedQuestionCount
+            );
         }
 
     </script>
