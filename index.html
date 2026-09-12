@@ -387,14 +387,29 @@
     });
 
 
-    if (quizQuestions.length === 0) {
+   
+                if (quizQuestions.length === 0) {
 
-        alert(
-            "Ehhez a kategóriához és nehézséghez még nincs elég kérdés."
-        );
+    alert(
+        "Ehhez a kategóriához és nehézséghez még nincs kérdés."
+    );
 
-        return;
-    }
+    return;
+}
+
+
+if (quizQuestions.length < selectedQuestionCount) {
+
+    alert(
+        "Figyelem!\n\n" +
+        "Ehhez a módhoz jelenleg csak " +
+        quizQuestions.length +
+        " kérdés áll rendelkezésre.\n\n" +
+        "A teljes kérdésbank feltöltése után " +
+        selectedQuestionCount +
+        " kérdés lesz."
+    );
+}
 
 
     quizQuestions = quizQuestions.sort(function() {
