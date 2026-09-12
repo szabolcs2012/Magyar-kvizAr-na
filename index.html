@@ -152,7 +152,52 @@
         </button>
 
     </div>
+    <!-- ========================= -->
+    <!-- 4. KVÍZ KÉPERNYŐ           -->
+    <!-- ========================= -->
 
+    <div id="quizScreen" style="display: none;">
+
+        <h1>🧠 KvízAréna</h1>
+
+        <p id="quizInfo"></p>
+
+        <h2 id="questionNumber"></h2>
+
+        <h2 id="questionText"></h2>
+
+
+        <div id="answers">
+
+            <button id="answer0" onclick="answerQuestion(0)"></button>
+
+            <br><br>
+
+            <button id="answer1" onclick="answerQuestion(1)"></button>
+
+            <br><br>
+
+            <button id="answer2" onclick="answerQuestion(2)"></button>
+
+            <br><br>
+
+            <button id="answer3" onclick="answerQuestion(3)"></button>
+
+        </div>
+
+
+        <p id="feedback"></p>
+
+
+        <button
+            id="nextButton"
+            onclick="nextQuestion()"
+            style="display: none;"
+        >
+            Következő kérdés ➡️
+        </button>
+
+    </div>
 
     <!-- ========================= -->
     <!-- JAVASCRIPT                -->
