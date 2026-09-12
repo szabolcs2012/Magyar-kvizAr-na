@@ -228,18 +228,10 @@
 
     if (currentQuestionIndex >= quizQuestions.length) {
 
-        alert(
-            "🎉 Vége a kvíznek!\n\n" +
-            "Játékos: " +
-            playerName +
-            "\nPontszám: " +
-            score +
-            " / " +
-            quizQuestions.length
-        );
+    showResult();
 
-        return;
-    }
+    return;
+}   }
 
 
     showQuestion();
