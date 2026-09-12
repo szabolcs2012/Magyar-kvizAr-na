@@ -10,7 +10,9 @@
 
 <body>
 
-    <!-- NÉV MEGADÁSA -->
+    <!-- ========================= -->
+    <!-- 1. NÉV MEGADÁSA           -->
+    <!-- ========================= -->
 
     <div id="nameScreen">
 
@@ -27,14 +29,18 @@
             maxlength="30"
         >
 
-        <button onclick="startGame()">Tovább</button>
+        <button onclick="startGame()">
+            Tovább
+        </button>
 
         <p id="errorMessage"></p>
 
     </div>
 
 
-    <!-- NEHÉZSÉG KIVÁLASZTÁSA -->
+    <!-- ========================= -->
+    <!-- 2. NEHÉZSÉG               -->
+    <!-- ========================= -->
 
     <div id="difficultyScreen" style="display: none;">
 
@@ -75,6 +81,82 @@
     </div>
 
 
+    <!-- ========================= -->
+    <!-- 3. KATEGÓRIA              -->
+    <!-- ========================= -->
+
+    <div id="categoryScreen" style="display: none;">
+
+        <h1>📚 Válassz kategóriát!</h1>
+
+        <p id="categoryInfo"></p>
+
+
+        <button onclick="chooseCategory('Magyarország')">
+            🇭🇺 Magyarország
+        </button>
+
+        <br><br>
+
+        <button onclick="chooseCategory('Történelem')">
+            📜 Történelem
+        </button>
+
+        <br><br>
+
+        <button onclick="chooseCategory('Földrajz')">
+            🌍 Földrajz
+        </button>
+
+        <br><br>
+
+        <button onclick="chooseCategory('Tudomány')">
+            🔬 Tudomány
+        </button>
+
+        <br><br>
+
+        <button onclick="chooseCategory('Sport')">
+            ⚽ Sport
+        </button>
+
+        <br><br>
+
+        <button onclick="chooseCategory('Film és sorozat')">
+            🎬 Film és sorozat
+        </button>
+
+        <br><br>
+
+        <button onclick="chooseCategory('Zene')">
+            🎵 Zene
+        </button>
+
+        <br><br>
+
+        <button onclick="chooseCategory('Videójátékok')">
+            🎮 Videójátékok
+        </button>
+
+        <br><br>
+
+        <button onclick="chooseCategory('Irodalom')">
+            📚 Irodalom
+        </button>
+
+        <br><br>
+
+        <button onclick="chooseCategory('Technológia')">
+            💻 Technológia
+        </button>
+
+    </div>
+
+
+    <!-- ========================= -->
+    <!-- JAVASCRIPT                -->
+    <!-- ========================= -->
+
     <script>
 
         let playerName = "";
@@ -83,13 +165,19 @@
 
         let selectedQuestionCount = "";
 
+        let selectedCategory = "";
 
+
+        // =========================
         // NÉV ELMENTÉSE
+        // =========================
 
         function startGame() {
 
             const name =
-                document.getElementById("playerName").value.trim();
+                document.getElementById("playerName")
+                .value
+                .trim();
 
             const errorMessage =
                 document.getElementById("errorMessage");
@@ -107,39 +195,71 @@
             playerName = name;
 
 
-            // Név képernyő elrejtése
-
-            document.getElementById("nameScreen").style.display =
-                "none";
+            document.getElementById("nameScreen")
+                .style.display = "none";
 
 
-            // Nehézség képernyő megjelenítése
-
-            document.getElementById("difficultyScreen").style.display =
-                "block";
+            document.getElementById("difficultyScreen")
+                .style.display = "block";
 
 
-            // Üdvözlő szöveg
-
-            document.getElementById("welcomeMessage").textContent =
-                "Szia, " + playerName + "! Válaszd ki a nehézséget.";
+            document.getElementById("welcomeMessage")
+                .textContent =
+                "Szia, " +
+                playerName +
+                "! Válaszd ki a nehézséget.";
         }
 
 
+        // =========================
         // NEHÉZSÉG KIVÁLASZTÁSA
+        // =========================
 
-        function chooseDifficulty(difficulty, questionCount) {
+        function chooseDifficulty(
+            difficulty,
+            questionCount
+        ) {
 
             selectedDifficulty = difficulty;
 
             selectedQuestionCount = questionCount;
 
 
+            document.getElementById("difficultyScreen")
+                .style.display = "none";
+
+
+            document.getElementById("categoryScreen")
+                .style.display = "block";
+
+
+            document.getElementById("categoryInfo")
+                .textContent =
+                difficulty +
+                " mód • " +
+                questionCount +
+                " kérdés";
+        }
+
+
+        // =========================
+        // KATEGÓRIA KIVÁLASZTÁSA
+        // =========================
+
+        function chooseCategory(category) {
+
+            selectedCategory = category;
+
+
             alert(
-                "Nehézség: " +
+                "Játékos: " +
+                playerName +
+                "\nNehézség: " +
                 selectedDifficulty +
-                "\nKérdések száma: " +
-                selectedQuestionCount
+                "\nKérdések: " +
+                selectedQuestionCount +
+                "\nKategória: " +
+                selectedCategory
             );
         }
 
