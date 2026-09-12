@@ -485,3 +485,57 @@ let score = 0;
 </body>
 
 </html>
+function showResult() {
+
+    document.getElementById("quizScreen")
+        .style.display = "none";
+
+
+    document.getElementById("resultScreen")
+        .style.display = "block";
+
+
+    document.getElementById("resultTitle")
+        .textContent =
+        "Szép munka, " + playerName + "!";
+
+
+    document.getElementById("resultScore")
+        .textContent =
+        "Pontszám: " +
+        score +
+        " / " +
+        quizQuestions.length;
+
+
+    const percentage =
+        Math.round(
+            (score / quizQuestions.length) * 100
+        );
+
+
+    if (percentage >= 90) {
+
+        document.getElementById("resultMessage")
+            .textContent =
+            "🔥 Fantasztikus teljesítmény!";
+
+    } else if (percentage >= 70) {
+
+        document.getElementById("resultMessage")
+            .textContent =
+            "👏 Nagyon szép eredmény!";
+
+    } else if (percentage >= 50) {
+
+        document.getElementById("resultMessage")
+            .textContent =
+            "👍 Jó eredmény!";
+
+    } else {
+
+        document.getElementById("resultMessage")
+            .textContent =
+            "💪 Gyakorolj még, és legközelebb még jobb lesz!";
+    }
+}
